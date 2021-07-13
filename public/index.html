@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David East</title>
+  <link rel="stylesheet" href="/reset.css">
+  <link rel="stylesheet" href="https://use.typekit.net/yjh1dhf.css">
+  <style>
+
+    :root {
+      --font-body: upgrade, sans-serif;
+      --font-mono: zeitung-mono, monotype;
+      --font-display: zeitung, sans-serif;
+
+      --color-off-white: #f9f9f9;
+      --color-gray-800: #383838;
+      --color-grey-700: #484848;
+      --color-orange-400: hsl(31, 72%, 68%);
+      --color-orange: hsl(30, 100%, 65%);
+
+      --theme-bg: var(--color-off-white);
+      --theme-color: var(--color-gray-800);
+      --theme-accent: var(--color-orange);
+      --theme-accent-light: var(--color-orange-400);
+    }
+
+    body {
+      background-color: var(--theme-bg);
+      color: var(--theme-color);
+      font-family: var(--font-body);
+      font-weight: 300;
+    }
+
+    a:visited {
+      color: var(--theme-color);
+    }
+
+    .site-grid {
+      display: grid;
+      grid-template-columns: 1.5fr [main-start] 7fr [main-end] 1.5fr;
+    }
+
+    .site-grid--border {
+      border-bottom-width: 2px;
+      border-style: solid;
+      border-color: var(--theme-color);
+    }
+
+    .site-grid > * {
+      grid-column: main;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: flex-end;
+      grid-column: main;
+    }
+
+    .site-header a {
+      text-decoration: none;
+    }
+
+    .site-header__image img {
+      height: 250px;
+      margin-block-end: -3px;
+    }
+
+    .site-header__meta__role h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .site-header__meta__role {
+      font-family: var(--font-display);
+      display: grid;
+      row-gap: 10px;
+    }
+
+    .site-header__meta__role_text {
+      color: var(--color-grey-700);
+    }
+
+    .site-header__meta {
+      display: grid;
+      row-gap: 24px;
+    }
+
+    .site-header__meta__roles {
+      display: grid;
+      row-gap: 4px;
+    }
+
+    .site-header__meta__role_text--accent {
+      color: var(--theme-accent-light);
+    }
+
+    .site-header__meta__links {
+      display: grid;
+      row-gap: 6px;
+      margin-block-end: 8px;
+    }
+
+    .site-header__meta__links__item {
+      display: grid;
+      grid-auto-flow: column;
+      place-content: baseline;
+      place-items: baseline;
+      column-gap: 6px;
+      font-family: var(--font-display);
+      color: var(--theme-color);
+      font-size: .875rem;
+      font-weight: bold;
+    }
+
+    .slanted, .slanted-xs, .slanted-xl {
+      position: relative;
+    }
+
+    .slanted-xs::before {
+      content: '';
+      position: absolute;
+      height: 6px;
+      width: 106%;
+      background: var(--theme-accent);
+      z-index: -1;
+      transform: rotate(-2deg);
+      border-radius: 2px;
+      bottom: -1px;
+    }
+
+    .slanted-xl::before {
+      content: '';
+      position: absolute;
+      height: 30px;
+      width: 106%;
+      background: var(--theme-accent);
+      z-index: -1;
+      transform: rotate(-1.95deg);
+      border-radius: 12px;
+      bottom: 12px;
+    }
+
+    .tag-line h2 {
+      font-size: 4.5rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .tag-line {
+      padding-block: 108px;
+    }
+  </style>
+</head>
+<body>
+  <div class="site-grid site-grid--border">
+
+    <header class="site-header">
+
+      <div class="site-header__image">
+        <img src="/de-profile.png" alt="David East, but the top half of the face" />
+      </div>
+      <div class="site-header__meta">
+        <div class="site-header__meta__role">
+          <h1>David East</h1>
+          <div class="site-header__meta__roles">
+            <div class="site-header__meta__role_text">Web Developer / Designer</div>
+            <div class="site-header__meta__role_text">Firebase</div>
+          </div>
+        </div>
+  
+        <div class="site-header__meta__links">
+          
+          <div class="site-header__meta__links__item">
+            <span class="slanted-xs">
+              <img src="/twitter.svg" alt="Twitter Logo" />
+              <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+                @_davideast
+              </a>
+            </span>
+          </div>
+          
+          <div class="site-header__meta__links__item">
+            <img src="/rss.svg" alt="RSS Logo" />
+            <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+              RSS
+            </a>
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </header>
+  </div>
+
+  <div class="site-grid">
+
+    <div class="tag-line">
+      <h2>
+        Here are my thoughts and <span class="slanted-xl">other stuff.</span>
+      </h2>
+    </div>
+
+  </div>
+
+</body>
+</html>
