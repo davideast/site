@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,6 @@
   <link rel="stylesheet" href="/reset.css">
   <link rel="stylesheet" href="https://use.typekit.net/yjh1dhf.css">
   <style>
-
     :root {
       --font-body: upgrade, sans-serif;
       --font-mono: zeitung-mono, monotype;
@@ -16,7 +16,7 @@
       --color-off-white: #f9f9f9;
       --color-gray-800: #383838;
       --color-grey-700: #484848;
-      --color-orange-400: hsl(31, 72%, 68%);
+      --color-orange-400: hsl(30, 100%, 85%);
       --color-orange: hsl(30, 100%, 65%);
 
       --theme-bg: var(--color-off-white);
@@ -30,6 +30,7 @@
       color: var(--theme-color);
       font-family: var(--font-body);
       font-weight: 300;
+      padding-block-end: 120px;
     }
 
     a:visited {
@@ -49,6 +50,12 @@
 
     .site-grid > * {
       grid-column: main;
+    }
+
+    .site-subgrid {
+      grid-column: 1 / -1;
+      grid-template-columns: 1.5fr [main-start] 7fr [main-end] 1.5fr;
+      display: grid;
     }
 
     .site-header {
@@ -97,7 +104,7 @@
 
     .site-header__meta__links {
       display: grid;
-      row-gap: 6px;
+      row-gap: 8px;
       margin-block-end: 8px;
     }
 
@@ -113,11 +120,14 @@
       font-weight: bold;
     }
 
-    .slanted, .slanted-xs, .slanted-xl {
+    .slanted,
+    .slanted-xs,
+    .slanted-xl {
       position: relative;
     }
 
-    .slanted-xs::before {
+    .slanted-xs::before,
+    .main-nav ul li a:hover::before {
       content: '';
       position: absolute;
       height: 6px;
@@ -127,6 +137,11 @@
       transform: rotate(-2deg);
       border-radius: 2px;
       bottom: -1px;
+    }
+
+    .main-nav ul li a:hover::before {
+      background: var(--theme-accent-light);
+      bottom: 2px;
     }
 
     .slanted-xl::before {
@@ -151,8 +166,60 @@
     .tag-line {
       padding-block: 108px;
     }
+
+    .site-columns {
+      display: grid;
+      grid-column: main;
+      grid-template-columns: [content-start] 2fr [content-end aside-start] 1fr [aside-end];
+      column-gap: 60px;
+    }
+
+    .site-columns__column:first-child,
+    .site-columns__column__content {
+      grid-column: content;
+    }
+
+    .site-columns__column:nth-child(2),
+    .site-columns__aside {
+      grid-column: aside;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+
+    .main-nav {
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-color: var(--theme-color);
+      padding-block-start: 12px;
+      padding-block-end: 12px;
+    }
+
+    .main-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .main-nav ul li a {
+      color: var(--theme-color);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
   </style>
 </head>
+
 <body>
   <div class="site-grid site-grid--border">
 
@@ -169,9 +236,9 @@
             <div class="site-header__meta__role_text">Firebase</div>
           </div>
         </div>
-  
+
         <div class="site-header__meta__links">
-          
+
           <div class="site-header__meta__links__item">
             <span class="slanted-xs">
               <img src="/twitter.svg" alt="Twitter Logo" />
@@ -180,20 +247,39 @@
               </a>
             </span>
           </div>
-          
+
           <div class="site-header__meta__links__item">
             <img src="/rss.svg" alt="RSS Logo" />
             <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
               RSS
             </a>
           </div>
-  
+
         </div>
-  
+
       </div>
-  
+
     </header>
   </div>
+
+  <nav class="main-nav site-grid">
+    <div class="site-columns">
+      <ul class="site-columns__aside">
+        <li>
+          <a class="slanted-xs" href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Blog</a>
+        </li>
+        <li>
+          <a href="#">Changelog</a>
+        </li>
+      </ul>      
+    </div>
+  </nav>
 
   <div class="site-grid">
 
@@ -206,16 +292,23 @@
   </div>
 
   <main class="site-grid">
-    <div class="site-columns">
 
+    <div class="site-columns">
       <div class="site-columns__column">
 
         <h3>Latest</h3>
 
       </div>
 
+      <div class="site-columns__column">
+
+        <h3>I'm proud of these</h3>
+
+      </div>
     </div>
+
   </main>
 
 </body>
+
 </html>
