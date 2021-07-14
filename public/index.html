@@ -14,14 +14,18 @@
       --font-display: zeitung, sans-serif;
 
       --color-off-white: #f9f9f9;
-      --color-gray-800: #383838;
+      --color-gray-200: hsl(0, 0%, 89%);
+      --color-gray-400: hsl(0, 0%, 43%);
       --color-grey-700: #484848;
+      --color-gray-800: #383838;
       --color-orange-400: hsl(30, 100%, 85%);
       --color-orange: hsl(30, 100%, 65%);
 
       --theme-bg: var(--color-off-white);
       --theme-color: var(--color-gray-800);
-      --theme-color-light: var(--color-grey-700);
+      --theme-color-light: var(--color-gray-700);
+      --theme-color-lighter: var(--color-gray-400);
+      --theme-color-lightest: var(--color-gray-200);
       --theme-accent: var(--color-orange);
       --theme-accent-light: var(--color-orange-400);
     }
@@ -31,7 +35,6 @@
       color: var(--theme-color);
       font-family: var(--font-body);
       font-weight: 300;
-      padding-block-end: 120px;
     }
 
     img {
@@ -47,6 +50,10 @@
 
     a:visited {
       color: var(--theme-color);
+    }
+
+    p {
+      line-height: 1.5;
     }
 
     .site-grid {
@@ -132,6 +139,16 @@
       font-size: .875rem;
       font-weight: bold;
     }
+  
+    .site-header__meta__links__item img[src="/twitter.svg"] {
+      position: relative;
+      top: 2px;
+    }
+
+    .site-header__meta__links__item img[src="/rss.svg"] {
+      position: relative;
+      top: 1px;
+    }
 
     .site-header--mobile {
       display: none;
@@ -169,6 +186,7 @@
     .slanted-xl {
       display: inline-block;
       position: relative;
+      z-index: 1;
     }
 
     .slanted-xs::before,
@@ -238,6 +256,10 @@
       grid-column: aside;
     }
 
+    main.site-grid {
+      padding-block-end: 160px;
+    }
+
     @media (max-width: 860px) {
 
       .site-columns {
@@ -259,11 +281,17 @@
     }
 
     .story-headlines li a {
-      color: var(--theme-color-light);
+      color: var(--theme-color);
       text-decoration: none;
       font-weight: bold;
       font-family: var(--font-display);
       font-size: 1rem;
+    }
+
+    .story-headlines li a:hover,
+    .story__header h4 a:hover {
+      color: var(--theme-color-lighter);
+      text-decoration: underline;
     }
 
     .aside-stories__section {
@@ -311,7 +339,8 @@
     }
   </style>
   <style>
-    .story__header h4 {
+    .story__header h4,
+    .story__header h4 a {
       font-size: 1.5rem;
       font-family: var(--font-display);
       font-weight: 800;
@@ -373,6 +402,10 @@
       align-items: center;
     }
 
+    .story__body__image__controls__container svg {
+      width: 12%;
+    }
+
     .story__body__image img {
       filter: brightness(0.65) contrast(0.95) saturate(0);
     }
@@ -387,10 +420,6 @@
     .story-feed {
       display: grid;
       row-gap: 48px;
-    }
-
-    p {
-      line-height: 1.5;
     }
 
     .story__body__link {
@@ -411,6 +440,17 @@
 
     .see-all {
       padding-block-start: 48px;
+    }
+  </style>
+  <style>
+    .main-footer {
+      background-color: var(--theme-color-lightest);
+      height: 152px;
+      place-content: center;
+    }
+    .main-footer nav {
+      display: grid;
+      row-gap: 10px;
     }
   </style>
 </head>
@@ -519,7 +559,9 @@
           <div class="story">
             
             <header class="story__header">
-              <h4>Actually learn CSS Grid.</h4>
+              <h4>
+                <a href="#">Actually learn CSS Grid.</a>
+              </h4>
               <div class="story__header__meta">
                 <h5 class="story__header__meta__date">June 9, 2021</h5>
                 <span class="story__header__meta__label slanted-xs">Bad at CSS Podcast</span>
@@ -711,6 +753,26 @@
     </div>
 
   </main>
+
+  <footer class="main-footer site-grid">
+    <nav>
+      <div class="site-header__meta__links__item">
+        <span class="slanted-xs">
+          <img src="/twitter.svg" alt="Twitter Logo" />
+          <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+            @_davideast
+          </a>
+        </span>
+      </div>
+
+      <div class="site-header__meta__links__item">
+        <img src="/rss.svg" alt="RSS Logo" />
+        <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+          RSS
+        </a>
+      </div>
+    </nav>
+  </footer>
 
 </body>
 
