@@ -21,6 +21,7 @@
 
       --theme-bg: var(--color-off-white);
       --theme-color: var(--color-gray-800);
+      --theme-color-light: var(--color-grey-700);
       --theme-accent: var(--color-orange);
       --theme-accent-light: var(--color-orange-400);
     }
@@ -31,6 +32,17 @@
       font-family: var(--font-body);
       font-weight: 300;
       padding-block-end: 120px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    a {
+      color: var(--theme-color-light);
+      position: relative;
+      text-decoration: none;
+      display: inline-block;
     }
 
     a:visited {
@@ -48,7 +60,7 @@
       border-color: var(--theme-color);
     }
 
-    .site-grid > * {
+    .site-grid>* {
       grid-column: main;
     }
 
@@ -57,7 +69,8 @@
       grid-template-columns: 1fr [main-start] min(896px, 90%) [main-end] 1fr;
       display: grid;
     }
-
+  </style>
+  <style>
     .site-header {
       display: flex;
       align-items: flex-end;
@@ -111,7 +124,7 @@
     .site-header__meta__links__item {
       display: grid;
       grid-auto-flow: column;
-      place-content: baseline;
+      place-content: flex-start;
       place-items: baseline;
       column-gap: 6px;
       font-family: var(--font-display);
@@ -133,8 +146,9 @@
       display: flex;
       justify-content: space-between;
     }
+
     @media (max-width: 572px) {
-      
+
       .site-header__image img {
         max-width: 100%;
         height: unset;
@@ -148,7 +162,8 @@
         display: grid;
       }
     }
-
+  </style>
+  <style>
     .slanted,
     .slanted-xs,
     .slanted-xl {
@@ -166,13 +181,13 @@
       z-index: -1;
       transform: rotate(-2deg);
       border-radius: 2px;
-      bottom: -1px;
+      bottom: 0px;
     }
 
     .main-nav ul li a.slanted-xs::before,
     .main-nav ul li a:hover::before {
       height: 3px;
-      bottom: 2px;
+      bottom: 0px;
     }
 
     .main-nav ul li a:hover::before {
@@ -188,12 +203,13 @@
       z-index: -1;
       transform: rotate(-1.95deg);
       border-radius: 12px;
-      bottom: 12px;
+      bottom: 0px;
     }
-
+  </style>
+  <style>
     .tag-line {
-      padding-block-start: clamp(21px, 4vw + 1rem, 54px);
-      padding-block-end: clamp(21px, 4vw + 1rem, 54px);
+      padding-block-start: clamp(21px, 5vw, 64px);
+      padding-block-end: clamp(42px, 12vw, 126px);
       display: grid;
       grid-template-columns: 7fr 1fr;
     }
@@ -230,12 +246,33 @@
 
     }
 
-    h3 {
+    .heading-label {
       font-family: var(--font-display);
       text-transform: uppercase;
       font-size: 1rem;
       letter-spacing: 1px;
       font-weight: bold;
+    }
+
+    .site-columns .heading-label {
+      padding-block-end: 32px;
+    }
+
+    .story-headlines li a {
+      color: var(--theme-color-light);
+      text-decoration: none;
+      font-weight: bold;
+      font-family: var(--font-display);
+      font-size: 1rem;
+    }
+
+    .aside-stories__section {
+      padding-block-end: 64px;
+    }
+
+    .story-headlines {
+      display: grid;
+      row-gap: 20px;
     }
 
     .main-nav {
@@ -267,16 +304,119 @@
       .main-nav .site-columns {
         grid-template-columns: 1fr;
       }
+
       .main-nav .site-columns .site-columns__aside {
         grid-column: 1;
       }
     }
+  </style>
+  <style>
+    .story__header h4 {
+      font-size: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+    }
 
+    .story__header {
+      display: grid;
+      row-gap: 10px;
+      padding-block-end: 16px;
+    }
+
+    .story__header__meta__date {
+      font-family: var(--font-display);
+      color: var(--theme-color-light);
+      font-size: .875rem;
+      padding-inline-end: 8px;
+    }
+
+    .story__header__meta {
+      display: flex;
+    }
+
+    .story__header__meta__label {
+      font-size: .625rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: var(--theme-color-light);
+    }
+
+    .story__body__image {
+      position: relative;
+    }
+
+    .story__body__image:hover {
+      filter: drop-shadow(hsla(0, 0%, 15%, .9) 0px 0px 14px);
+    }
+
+    .story__body__image__cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: .1;
+      background: var(--theme-accent);
+    }
+
+    .story__body__image__controls {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .story__body__image__controls__container {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .story__body__image img {
+      filter: brightness(0.65) contrast(0.95) saturate(0);
+    }
+
+    .story__body__link {
+      font-size: .875rem;
+      color: var(--theme-color);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .story-feed {
+      display: grid;
+      row-gap: 48px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .story__body__link {
+      text-transform: uppercase;
+    }
+
+    .story__body {
+      display: grid;
+      row-gap: 12px;
+    }
+
+    .see-all a {
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--theme-color);
+      font-size: 1.5rem;
+    }
+
+    .see-all {
+      padding-block-start: 64px;
+    }
   </style>
 </head>
 
 <body>
-  
+
   <header class="site-grid site-grid--border site-header--mobile">
     <nav>
       <div class="site-header__meta__links__item">
@@ -296,7 +436,7 @@
       </div>
     </nav>
   </header>
-  
+
   <div class="site-grid site-grid--border">
 
     <header class="site-header">
@@ -353,7 +493,7 @@
         <li>
           <a href="#">Changelog</a>
         </li>
-      </ul>      
+      </ul>
     </div>
   </nav>
 
@@ -372,15 +512,202 @@
     <div class="site-columns">
       <div class="site-columns__column">
 
-        <h3>Latest</h3>
+        <h3 class="heading-label">Latest</h3>
+
+        <section class="story-feed">
+
+          <div class="story">
+            
+            <header class="story__header">
+              <h4>Actually learn CSS Grid.</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">June 9, 2021</h5>
+                <span class="story__header__meta__label slanted-xs">Bad at CSS Podcast</span>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <div class="story__body__image">
+                <img src="/bac002-thumb.png" alt="Bad at CSS Video Podcast thumbnail. How to CSS Grid?" />
+                <div class="story__body__image__cover"></div>
+                <div class="story__body__image__controls">
+                  <div class="story__body__image__controls__container">
+                    <svg width="102" height="113" viewBox="0 0 102 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.43555 107.561V5L96.0729 52.4598L5.43555 107.561Z" stroke="#E8C568" stroke-width="10" stroke-linejoin="round"/>
+                      </svg>
+                  </div>                    
+                </div>
+              </div>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Watch on YouTube</span>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="story">
+            
+            <header class="story__header">
+              <h4>Firebase Crash Course</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">March 9, 2021</h5>
+                <span class="story__header__meta__label slanted-xs">CSS Tricks</span>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                This article is going to help you, dear front-end developer, understand all that is Firebase. We’re going to cover lots of details about what Firebase is, why it can be useful to you, and show examples of how. But first, I think you’ll enjoy a little story about how Firebase came to be.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>Sampling bias, FDR, and The State of JS</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">January 20, 2020</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                In 1936 The Literary Digest conducted a straw poll on the Presidential Race between Alfred Landon and Franklin Roosevelt. The Literary Digest polled 10 million (yes, million) Americans of which 2.4 million responded. First, you have to understand that 2.4 million people is an absurd sample size.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>Easy Service Workers with Workbox.js</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">September 14, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                Service Workers are possibly the most revolutionary Browser API we have ever received. They unlock a whole realm of possiblities: offline apps, push notifications, background sync, proxying requests, and so much more. But where there's power, there's complexity. 
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>3 motivating books for your professional life
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">August 30, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                I'm switching things up for this topic. There won't be any code in this edition. Instead, I'm writing about an equally important topic: motivation. Productivity isn't always hot keys and macros. Productivity comes when you manage your time well, prioritize the right tasks, track your progress, and refuse to quit.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>
+                A brief guide to using WebpageTest
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">August 22, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                Web performance is a lot like user experience. It's hard to just "sprinkle" in some UX and see the site get "pretty". User experience isn't an add-on, it's a series of fundamental decisions. User experience means you take time to understand the user's needs and you design your app to fit them. This isn't a one time study either. It's a continuous process. Web performance is the same way.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+          
+          <div class="story">
+            <header class="story__header">
+              <h4>
+                How to build a simple camera component with Custom Elements
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">August 15, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                This tutorial is not framework specifc. Leaf node components should be reusable. Custom Elements are a new(ish) browser standard that allows you to build reusable elements that are portable in most JavaScript frameworks. If you're not familiar with Custom Elements, it's okay. They're not too hard to use up front.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+        </section>
+
+        <div class="see-all">
+          <a href="#" class="slanted-xs">See all</a>
+        </div>
 
       </div>
 
-      <div class="site-columns__column">
+      <aside class="site-columns__column aside-stories">
 
-        <h3>I'm proud of these</h3>
+        <section class="aside-stories__section">
+          <h3 class="heading-label">I'm proud of these</h3>
 
-      </div>
+          <ul class="story-headlines">
+            <li>
+              <a href="#">Actually learn CSS Grid.</a>
+            </li>
+            <li>
+              <a href="#">I dropped 95% of my Firebase bundle size using this one weird trick</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="aside-stories__section">
+          <h3 class="heading-label">Popular</h3>
+
+          <ul class="story-headlines">
+            <li>
+              <a href="#">TypeScript's new import() types feature explained</a>
+            </li>
+            <li>
+              <a href="#">I dropped 95% of my Firebase bundle size using this one weird trick</a>
+            </li>
+            <li>
+              <a href="#">
+                Why it's tricky to measure Server-side Rendering performance
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Simplify Web Worker code with Comlink
+              </a>
+            </li>
+          </ul>
+        </section>
+
+      </aside>
     </div>
 
   </main>
