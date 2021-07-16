@@ -70,6 +70,92 @@ p {
   display: grid;
 }
 
+.site-columns {
+  display: grid;
+  grid-column: main;
+  grid-template-columns: [content-start] 2fr [content-end aside-start] 1fr [aside-end];
+  gap: 60px;
+}
+
+.site-columns__column:first-child,
+.site-columns__column__content {
+  grid-column: content;
+}
+
+.site-columns__column:nth-child(2),
+.site-columns__aside {
+  grid-column: aside;
+}
+
+main.site-grid {
+  padding-block-end: 160px;
+}
+
+@media (max-width: 860px) {
+  .site-columns {
+    grid-template-columns: [content-start aside-start] 1fr [content-end aside-end];
+  }
+}
+
+.slanted,
+.slanted-xs,
+.slanted-xl {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.slanted-xl::before {
+  content: '';
+  position: absolute;
+  height: 30px;
+  width: 106%;
+  background: var(--theme-accent);
+  z-index: -1;
+  transform: rotate(-1.95deg);
+  border-radius: 12px;
+  bottom: 0px;
+}
+
+
+.slanted-xs::before,
+.slanted-nav-hover:hover::before {
+  content: '';
+  position: absolute;
+  height: 6px;
+  width: 106%;
+  background: var(--theme-accent);
+  z-index: -1;
+  transform: rotate(-2deg);
+  border-radius: 2px;
+  bottom: 0px;
+}
+
+.site-header__meta__links__item,
+.meta-item {
+  display: grid;
+  grid-auto-flow: column;
+  place-content: flex-start;
+  place-items: baseline;
+  column-gap: 6px;
+  font-family: var(--font-display);
+  color: var(--theme-color);
+  font-size: .875rem;
+  font-weight: bold;
+}
+
+.site-header__meta__links__item img[src="/assets/twitter.svg"],
+.meta-item img[src="/assets/twitter.svg"] {
+  position: relative;
+  top: 2px;
+}
+
+.site-header__meta__links__item img[src="/assets/rss.svg"],
+.meta-item img[src="/assets/rss.svg"] {
+  position: relative;
+  top: 1px;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)

@@ -1,0 +1,145 @@
+---
+/* Astro stuff goes here */
+---
+<style>
+  .site-header {
+    display: flex;
+    align-items: flex-end;
+    grid-column: main;
+  }
+
+  .site-header a {
+    text-decoration: none;
+  }
+
+  .site-header__image img {
+    height: 250px;
+    margin-block-end: -3px;
+  }
+
+  .site-header__meta__role h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .site-header__meta__role {
+    font-family: var(--font-display);
+    display: grid;
+    row-gap: 10px;
+  }
+
+  .site-header__meta__role_text {
+    color: var(--color-grey-700);
+  }
+
+  .site-header__meta {
+    display: grid;
+    row-gap: 24px;
+  }
+
+  .site-header__meta__roles {
+    display: grid;
+    row-gap: 4px;
+  }
+
+  .site-header__meta__role_text--accent {
+    color: var(--theme-accent-light);
+  }
+
+  .site-header__meta__links {
+    display: grid;
+    row-gap: 8px;
+    margin-block-end: 8px;
+  }
+
+  .site-header--mobile {
+    display: none;
+    padding-block-start: 6px;
+    padding-block-end: 6px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--theme-color);
+  }
+
+  .site-header--mobile nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 572px) {
+
+    .site-header__image img {
+      max-width: 100%;
+      height: unset;
+    }
+
+    .site-header__meta {
+      display: none;
+    }
+
+    .site-header--mobile {
+      display: grid;
+    }
+  }
+</style>
+
+<header class="site-grid site-grid--border site-header--mobile">
+  <nav>
+    <div class="site-header__meta__links__item">
+      <span class="slanted-xs">
+        <img src="/assets/twitter.svg" alt="Twitter Logo" />
+        <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+          @_davideast
+        </a>
+      </span>
+    </div>
+
+    <div class="site-header__meta__links__item">
+      <img src="/assets/rss.svg" alt="RSS Logo" />
+      <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+        RSS
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="site-grid site-grid--border">
+
+  <header class="site-header">
+
+    <div class="site-header__image">
+      <img src="/assets/de-profile.png" alt="David East, but the top half of the face" />
+    </div>
+    <div class="site-header__meta">
+      <div class="site-header__meta__role">
+        <h1>David East</h1>
+        <div class="site-header__meta__roles">
+          <div class="site-header__meta__role_text">Web Developer / Designer</div>
+          <div class="site-header__meta__role_text">Firebase</div>
+        </div>
+      </div>
+
+      <div class="site-header__meta__links">
+
+        <div class="site-header__meta__links__item">
+          <span class="slanted-xs">
+            <img src="/assets/twitter.svg" alt="Twitter Logo" />
+            <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+              @_davideast
+            </a>
+          </span>
+        </div>
+
+        <div class="site-header__meta__links__item">
+          <img src="/assets/rss.svg" alt="RSS Logo" />
+          <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+            RSS
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+</div>

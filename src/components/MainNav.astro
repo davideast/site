@@ -1,0 +1,68 @@
+---
+/* Astro stuff goes here */
+---
+<style>
+  .main-nav ul li a.slanted-xs::before,
+  .main-nav ul li a:hover::before {
+    height: 3px;
+    bottom: 0px;
+  }
+
+  .main-nav ul li a:hover::before {
+    background: var(--theme-accent-light);
+  }
+
+  .main-nav {
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-color: var(--theme-color);
+    padding-block-start: 12px;
+    padding-block-end: 12px;
+  }
+
+  .main-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .main-nav ul li a {
+    color: var(--theme-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  @media (max-width: 1100px) {
+    .main-nav .site-columns {
+      grid-template-columns: 1fr;
+    }
+
+    .main-nav .site-columns .site-columns__aside {
+      grid-column: 1;
+    }
+  }  
+</style>
+
+<nav class="main-nav site-grid">
+  <div class="site-columns">
+    <ul class="site-columns__aside">
+      <li>
+        <a class="slanted-xs" href="#">Home</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Blog</a>
+      </li>
+      <li>
+        <a href="#">Changelog</a>
+      </li>
+    </ul>
+  </div>
+</nav>  
