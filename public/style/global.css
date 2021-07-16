@@ -1,0 +1,125 @@
+
+:root {
+  --font-body: upgrade, sans-serif;
+  --font-mono: zeitung-mono, monotype;
+  --font-display: zeitung, sans-serif;
+
+  --color-off-white: #f9f9f9;
+  --color-gray-200: hsl(0, 0%, 89%);
+  --color-gray-400: hsl(0, 0%, 43%);
+  --color-grey-700: #484848;
+  --color-gray-800: #383838;
+  --color-orange-400: hsl(30, 100%, 85%);
+  --color-orange: hsl(30, 100%, 65%);
+
+  --theme-bg: var(--color-off-white);
+  --theme-color: var(--color-gray-800);
+  --theme-color-light: var(--color-gray-700);
+  --theme-color-lighter: var(--color-gray-400);
+  --theme-color-lightest: var(--color-gray-200);
+  --theme-accent: var(--color-orange);
+  --theme-accent-light: var(--color-orange-400);
+}
+
+body {
+  background-color: var(--theme-bg);
+  color: var(--theme-color);
+  font-family: var(--font-body) !important;
+  font-weight: 300 !important;
+  overflow-x: hidden !important;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--theme-color-light);
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:visited {
+  color: var(--theme-color);
+}
+
+p {
+  line-height: 1.5;
+}
+
+.site-grid {
+  display: grid;
+  grid-template-columns: 1fr [main-start] min(896px, 90%) [main-end] 1fr;
+  position: relative;
+}
+
+.site-grid--border {
+  border-bottom-width: 2px;
+  border-style: solid;
+  border-color: var(--theme-color);
+}
+
+.site-grid>* {
+  grid-column: main;
+}
+
+.site-subgrid {
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr [main-start] min(896px, 90%) [main-end] 1fr;
+  display: grid;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}

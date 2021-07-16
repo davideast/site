@@ -1,0 +1,830 @@
+---
+// Component Imports
+import Tour from '../components/Tour.astro';
+// You can import components from any supported Framework here!
+
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'David East';
+
+// Full Astro Component Syntax:
+// https://github.com/snowpackjs/astro/blob/main/docs/core-concepts/astro-components.md
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="https://use.typekit.net/yjh1dhf.css">
+    <link rel="stylesheet" href="/style/global.css">
+    <style>
+    .site-header {
+      display: flex;
+      align-items: flex-end;
+      grid-column: main;
+    }
+
+    .site-header a {
+      text-decoration: none;
+    }
+
+    .site-header__image img {
+      height: 250px;
+      margin-block-end: -3px;
+    }
+
+    .site-header__meta__role h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .site-header__meta__role {
+      font-family: var(--font-display);
+      display: grid;
+      row-gap: 10px;
+    }
+
+    .site-header__meta__role_text {
+      color: var(--color-grey-700);
+    }
+
+    .site-header__meta {
+      display: grid;
+      row-gap: 24px;
+    }
+
+    .site-header__meta__roles {
+      display: grid;
+      row-gap: 4px;
+    }
+
+    .site-header__meta__role_text--accent {
+      color: var(--theme-accent-light);
+    }
+
+    .site-header__meta__links {
+      display: grid;
+      row-gap: 8px;
+      margin-block-end: 8px;
+    }
+
+    .site-header__meta__links__item {
+      display: grid;
+      grid-auto-flow: column;
+      place-content: flex-start;
+      place-items: baseline;
+      column-gap: 6px;
+      font-family: var(--font-display);
+      color: var(--theme-color);
+      font-size: .875rem;
+      font-weight: bold;
+    }
+  
+    .site-header__meta__links__item img[src="/assets/twitter.svg"] {
+      position: relative;
+      top: 2px;
+    }
+
+    .site-header__meta__links__item img[src="/assets/rss.svg"] {
+      position: relative;
+      top: 1px;
+    }
+
+    .site-header--mobile {
+      display: none;
+      padding-block-start: 6px;
+      padding-block-end: 6px;
+      border-bottom-width: 1px;
+      border-style: solid;
+      border-color: var(--theme-color);
+    }
+
+    .site-header--mobile nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 572px) {
+
+      .site-header__image img {
+        max-width: 100%;
+        height: unset;
+      }
+
+      .site-header__meta {
+        display: none;
+      }
+
+      .site-header--mobile {
+        display: grid;
+      }
+    }
+    </style>
+    <style>
+        .slanted,
+        .slanted-xs,
+        .slanted-xl {
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        }
+
+        .slanted-xs::before,
+        .main-nav ul li a:hover::before {
+        content: '';
+        position: absolute;
+        height: 6px;
+        width: 106%;
+        background: var(--theme-accent);
+        z-index: -1;
+        transform: rotate(-2deg);
+        border-radius: 2px;
+        bottom: 0px;
+        }
+
+        .main-nav ul li a.slanted-xs::before,
+        .main-nav ul li a:hover::before {
+        height: 3px;
+        bottom: 0px;
+        }
+
+        .main-nav ul li a:hover::before {
+        background: var(--theme-accent-light);
+        }
+
+        .slanted-xl::before {
+        content: '';
+        position: absolute;
+        height: 30px;
+        width: 106%;
+        background: var(--theme-accent);
+        z-index: -1;
+        transform: rotate(-1.95deg);
+        border-radius: 12px;
+        bottom: 0px;
+        }
+    </style>
+    <style>
+        .tag-line {
+        padding-block-start: clamp(21px, 5vw, 64px);
+        padding-block-end: clamp(42px, 12vw, 126px);
+        display: grid;
+        grid-template-columns: 7fr 1fr;
+        }
+
+        .tag-line h2 {
+        font-size: clamp(2rem, 6vw + 1rem, 4.5rem);
+        font-family: var(--font-display);
+        font-weight: 800;
+        line-height: 1.2;
+        }
+
+        .site-columns {
+        display: grid;
+        grid-column: main;
+        grid-template-columns: [content-start] 2fr [content-end aside-start] 1fr [aside-end];
+        gap: 60px;
+        }
+
+        .site-columns__column:first-child,
+        .site-columns__column__content {
+        grid-column: content;
+        }
+
+        .site-columns__column:nth-child(2),
+        .site-columns__aside {
+        grid-column: aside;
+        }
+
+        main.site-grid {
+        padding-block-end: 160px;
+        }
+
+        @media (max-width: 860px) {
+
+        .site-columns {
+            grid-template-columns: [content-start aside-start] 1fr [content-end aside-end];
+        }
+
+        }
+
+        .heading-label {
+        font-family: var(--font-display);
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        font-weight: bold;
+        }
+
+        .site-columns .heading-label {
+        padding-block-end: 32px;
+        }
+
+        .story-headlines li a {
+        color: var(--theme-color);
+        text-decoration: none;
+        font-weight: bold;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        }
+
+        .story-headlines li a:hover,
+        .story__header h4 a:hover {
+        color: var(--theme-color-lighter);
+        text-decoration: underline;
+        }
+
+        .aside-stories__section {
+        padding-block-end: 64px;
+        }
+
+        .story-headlines {
+        display: grid;
+        row-gap: 20px;
+        }
+
+        .main-nav {
+        border-bottom-width: 1px;
+        border-style: solid;
+        border-color: var(--theme-color);
+        padding-block-start: 12px;
+        padding-block-end: 12px;
+        }
+
+        .main-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        }
+
+        .main-nav ul li a {
+        color: var(--theme-color);
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: var(--font-display);
+        font-size: .75rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        position: relative;
+        }
+
+        @media (max-width: 1100px) {
+        .main-nav .site-columns {
+            grid-template-columns: 1fr;
+        }
+
+        .main-nav .site-columns .site-columns__aside {
+            grid-column: 1;
+        }
+        }
+    </style>
+    <style>
+        .story__header h4,
+        .story__header h4 a {
+        font-size: 1.5rem;
+        font-family: var(--font-display);
+        font-weight: 800;
+        }
+
+        .story__header {
+        display: grid;
+        row-gap: 10px;
+        padding-block-end: 16px;
+        }
+
+        .story__header__meta__date {
+        font-family: var(--font-display);
+        color: var(--theme-color-light);
+        font-size: .875rem;
+        padding-inline-end: 8px;
+        }
+
+        .story__header__meta {
+        display: flex;
+        }
+
+        .story__header__meta__label {
+        font-size: .625rem;
+        font-family: var(--font-display);
+        font-weight: 800;
+        color: var(--theme-color-light);
+        }
+
+        .story__body__image {
+        position: relative;
+        }
+
+        .story__body__image:hover {
+        filter: drop-shadow(hsla(0, 0%, 15%, .9) 0px 0px 14px);
+        }
+
+        .story__body__image__cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .1;
+        background: var(--theme-accent);
+        border-radius: 12px;
+        }
+
+        .story__body__image__controls {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        }
+
+        .story__body__image__controls__container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .story__body__image__controls__container svg {
+        width: 12%;
+        }
+
+        .story__body__image video {
+        width: 100%;
+        }
+
+        .story__body__image img,
+        .story__body__image video {
+        filter: brightness(0.65) contrast(0.95) saturate(0);
+        object-fit: cover;
+        aspect-ratio: 16 / 9;
+        border-radius: 12px;
+        }
+
+        .story__body__link {
+        font-size: .875rem;
+        color: var(--theme-color);
+        font-weight: 800;
+        text-decoration: none;
+        }
+
+        .story-feed {
+        display: grid;
+        row-gap: 48px;
+        }
+
+        .story__body__link {
+        text-transform: uppercase;
+        }
+
+        .story__body {
+        display: grid;
+        row-gap: 12px;
+        }
+
+        .see-all a {
+        text-transform: uppercase;
+        font-weight: 800;
+        color: var(--theme-color);
+        font-size: 1.5rem;
+        }
+
+        .see-all {
+        padding-block-start: 48px;
+        }
+    </style>
+    <style>
+        .main-footer {
+        background-color: var(--theme-color-lightest);
+        height: 152px;
+        place-content: center;
+        }
+        .main-footer nav {
+        display: grid;
+        row-gap: 10px;
+        }
+    </style>
+    <style>
+        .floating-svg-left {
+        position: absolute;
+        grid-column: 1;
+        }
+
+        .floating-svg-right {
+        position: absolute;
+        grid-column: -1;
+        }
+
+        .floating-svg-left.tag-line-square {
+        left: 32px;
+        bottom: 64px;
+        }
+        .floating-svg-left.story-triangle {
+        left: -40px;
+        }
+        .floating-svg-left.story-square {
+        transform: translateY(600px) translateX(24px);
+        }
+        .floating-svg-left.story-square-bottom {
+        transform: translateY(1520px) translateX(20px);
+        }
+        .floating-svg-left.story-outlined-triangle {
+        transform: translateY(1040px);
+        left: 0;
+        }
+        .floating-svg-right.aside-square {
+        transform: translateY(220px);
+        right: 32px;
+        }
+        .floating-svg-right.aside-square-bottom {
+        transform: translateY(1220px);
+        right: 48px;
+        }
+        .floating-svg-right.aside-triangle {
+        transform: translateY(600px);
+        right: -16px;
+        }
+        .floating-svg-right.aside-triangle-bottom {
+        transform: translateY(1460px);
+        right: -32px;
+        }
+        @media (max-width: 860px) {
+        .floating-svg-left,
+        .floating-svg-right {
+            display: none;
+        }
+        }
+    </style>
+</head>
+<body>
+
+  <header class="site-grid site-grid--border site-header--mobile">
+    <nav>
+      <div class="site-header__meta__links__item">
+        <span class="slanted-xs">
+          <img src="/assets/twitter.svg" alt="Twitter Logo" />
+          <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+            @_davideast
+          </a>
+        </span>
+      </div>
+
+      <div class="site-header__meta__links__item">
+        <img src="/assets/rss.svg" alt="RSS Logo" />
+        <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+          RSS
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="site-grid site-grid--border">
+
+    <header class="site-header">
+
+      <div class="site-header__image">
+        <img src="/assets/de-profile.png" alt="David East, but the top half of the face" />
+      </div>
+      <div class="site-header__meta">
+        <div class="site-header__meta__role">
+          <h1>David East</h1>
+          <div class="site-header__meta__roles">
+            <div class="site-header__meta__role_text">Web Developer / Designer</div>
+            <div class="site-header__meta__role_text">Firebase</div>
+          </div>
+        </div>
+
+        <div class="site-header__meta__links">
+
+          <div class="site-header__meta__links__item">
+            <span class="slanted-xs">
+              <img src="/assets/twitter.svg" alt="Twitter Logo" />
+              <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+                @_davideast
+              </a>
+            </span>
+          </div>
+
+          <div class="site-header__meta__links__item">
+            <img src="/assets/rss.svg" alt="RSS Logo" />
+            <a href="https://twitter.com/_davideast" class="site-header__meta__links__item__text">
+              RSS
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+  </div>
+
+  <nav class="main-nav site-grid">
+    <div class="site-columns">
+      <ul class="site-columns__aside">
+        <li>
+          <a class="slanted-xs" href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        <li>
+          <a href="#">Blog</a>
+        </li>
+        <li>
+          <a href="#">Changelog</a>
+        </li>
+      </ul>
+    </div>
+  </nav>  
+
+  <div class="site-grid">
+
+    <div class="floating-svg-left tag-line-square">
+      <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10.9761" y="37.4298" width="28" height="28" rx="2" transform="rotate(-109.135 10.9761 37.4298)" stroke="hsl(0, 0%, 82%)" stroke-width="4"/>
+      </svg>
+    </div>
+
+    <div class="tag-line">
+      <h2>
+        Here are my thoughts and <span class="slanted-xl">other stuff.</span>
+      </h2>
+    </div>
+
+  </div>
+
+  <main class="site-grid">
+
+    <div class="floating-svg-left story-triangle">
+      <svg width="122" height="267" viewBox="0 0 122 267" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="122" height="267">
+        <rect x="122" y="267" width="122" height="267" transform="rotate(-180 122 267)" fill="#C4C4C4"/>
+        </mask>
+        <g mask="url(#mask0)">
+        <rect x="-44.7441" y="306.829" width="242.654" height="242.654" rx="21" transform="rotate(-135 -44.7441 306.829)" fill="hsl(32, 32%, 89%)" />
+        </g>
+      </svg>        
+    </div>
+
+    <div class="floating-svg-left story-square">
+      <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10.9761" y="37.4298" width="28" height="28" rx="2" transform="rotate(-109.135 10.9761 37.4298)" stroke="hsl(32, 32%, 89%)" stroke-width="4"/>
+      </svg>
+    </div>
+
+    <div class="floating-svg-left story-outlined-triangle">
+      <svg width="61" height="105" viewBox="0 0 61 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="61" height="105">
+        <rect x="61" y="105" width="61" height="105" transform="rotate(-180 61 105)" fill="#C4C4C4"/>
+        </mask>
+        <g mask="url(#mask0)">
+        <rect y="-3.51727" width="179.965" height="169.161" rx="21" transform="matrix(-0.810158 -0.586212 0.810158 -0.586212 -67.0587 149.2)" stroke="hsl(0, 0%, 82%)" stroke-width="6"/>
+        </g>
+      </svg>  
+    </div>
+
+    <div class="floating-svg-right aside-square">
+      <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.82434" y="20.5314" width="28" height="28" rx="2" transform="rotate(-41.9213 1.82434 20.5314)" stroke="hsl(32, 32%, 89%)" stroke-width="4"/>
+      </svg>        
+    </div>
+
+    <div class="floating-svg-right aside-triangle">
+      <svg width="122" height="264" viewBox="0 0 122 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="122" height="264">
+        <rect width="122" height="264" fill="#C4C4C4"/>
+        </mask>
+        <g mask="url(#mask0)">
+        <rect x="166.744" y="-39.8293" width="242.654" height="242.654" rx="21" transform="rotate(45 166.744 -39.8293)" stroke="hsl(32, 0%, 89%)" stroke-width="6"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="floating-svg-right aside-square-bottom">
+      <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.82434" y="20.5314" width="28" height="28" rx="2" transform="rotate(-41.9213 1.82434 20.5314)" stroke="hsl(32, 32%, 89%)" stroke-width="4"/>
+      </svg>        
+    </div>
+
+    <div class="floating-svg-right aside-triangle-bottom">
+      <svg width="122" height="264" viewBox="0 0 122 264" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="122" height="264">
+        <rect width="122" height="264" fill="#C4C4C4"/>
+        </mask>
+        <g mask="url(#mask0)">
+        <rect x="166.744" y="-39.8293" width="242.654" height="242.654" rx="21" transform="rotate(45 166.744 -39.8293)" fill="hsl(32, 32%, 89%)" />
+        </g>
+      </svg>  
+    </div>
+
+    <div class="floating-svg-left story-square-bottom">
+      <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10.9761" y="37.4298" width="28" height="28" rx="2" transform="rotate(-109.135 10.9761 37.4298)" stroke="hsl(32, 32%, 89%)" stroke-width="4"/>
+      </svg>
+    </div>
+
+    <div class="site-columns">
+      <div class="site-columns__column">
+
+        <h3 class="heading-label">Latest</h3>
+
+        <section class="story-feed">
+          <div class="story">  
+            <header class="story__header">
+              <h4>
+                <a href="#">Actually learn CSS Grid.</a>
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">June 9, 2021</h5>
+                <span class="story__header__meta__label slanted-xs">Bad at CSS Podcast</span>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <div class="story__body__image">
+                <img src="/assets/bac002-thumb.png" alt="Bad at CSS Video Podcast thumbnail. How to CSS Grid?" />
+                <div class="story__body__image__cover"></div>
+                <div class="story__body__image__controls">
+                  <div class="story__body__image__controls__container">
+                    <svg width="102" height="113" viewBox="0 0 102 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5.43555 107.561V5L96.0729 52.4598L5.43555 107.561Z" stroke="#E8C568" stroke-width="10" stroke-linejoin="round"/>
+                      </svg>
+                  </div>                    
+                </div>
+              </div>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Watch on YouTube</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>Firebase Crash Course</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">March 9, 2021</h5>
+                <span class="story__header__meta__label slanted-xs">CSS Tricks</span>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                This article is going to help you, dear front-end developer, understand all that is Firebase. We’re going to cover lots of details about what Firebase is, why it can be useful to you, and show examples of how. But first, I think you’ll enjoy a little story about how Firebase came to be.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>Sampling bias, FDR, and The State of JS</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">January 20, 2020</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                In 1936 The Literary Digest conducted a straw poll on the Presidential Race between Alfred Landon and Franklin Roosevelt. The Literary Digest polled 10 million (yes, million) Americans of which 2.4 million responded. First, you have to understand that 2.4 million people is an absurd sample size.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>Easy Service Workers with Workbox.js</h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">September 14, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                Service Workers are possibly the most revolutionary Browser API we have ever received. They unlock a whole realm of possiblities: offline apps, push notifications, background sync, proxying requests, and so much more. But where there's power, there's complexity. 
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>3 motivating books for your professional life
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">August 30, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                I'm switching things up for this topic. There won't be any code in this edition. Instead, I'm writing about an equally important topic: motivation. Productivity isn't always hot keys and macros. Productivity comes when you manage your time well, prioritize the right tasks, track your progress, and refuse to quit.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="story">
+            <header class="story__header">
+              <h4>
+                A brief guide to using WebpageTest
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">August 22, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                Web performance is a lot like user experience. It's hard to just "sprinkle" in some UX and see the site get "pretty". User experience isn't an add-on, it's a series of fundamental decisions. User experience means you take time to understand the user's needs and you design your app to fit them. This isn't a one time study either. It's a continuous process. Web performance is the same way.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+          
+          <div class="story">
+            <header class="story__header">
+              <h4>
+                How to build a simple camera component with Custom Elements
+              </h4>
+              <div class="story__header__meta">
+                <h5 class="story__header__meta__date">August 15, 2018</h5>
+              </div>
+            </header>
+
+            <div class="story__body">
+              <p>
+                This tutorial is not framework specifc. Leaf node components should be reusable. Custom Elements are a new(ish) browser standard that allows you to build reusable elements that are portable in most JavaScript frameworks. If you're not familiar with Custom Elements, it's okay. They're not too hard to use up front.
+              </p>
+              <a href="#" class="story__body__link">
+                <span class="slanted-xs">Read me?</span>
+              </a>
+            </div>
+          </div>
+
+        </section>
+
+        <div class="see-all">
+          <a href="#" class="slanted-xs">See all</a>
+        </div>
+
+      </div>
+
+      <aside class="site-columns__column aside-stories">
+
+        <section class="aside-stories__section">
+          <h3 class="heading-label">I'm proud of these</h3>
+
+          <ul class="story-headlines">
+            <li>
+              <a href="#">Actually learn CSS Grid.</a>
+            </li>
+            <li>
+              <a href="#">I dropped 95% of my Firebase bundle size using this one weird trick</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="aside-stories__section">
+          <h3 class="heading-label">Popular</h3>
+
+          <ul class="story-headlines">
+            <li>
+              <a href="#">TypeScript's new import() types feature explained</a>
+            </li>
+            <li>
+              <a href="#">I dropped 95% of my Firebase bundle size using this one weird trick</a>
+            </li>
+            <li>
+              <a href="#">
+                Why it's tricky to measure Server-side Rendering performance
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Simplify Web Worker code with Comlink
+              </a>
+            </li>
+          </ul>
+        </section>
+
+      </aside>
+    </div>
+
+  </main>
+
+</body>
+</html>
