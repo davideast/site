@@ -1,0 +1,34 @@
+---
+export interface Props {
+  post: any;
+}
+const { post } = Astro.props;
+
+function formatDate(date) {
+  return new Date(date).toUTCString().replace(/(\d\d\d\d) .*/, '$1'); // remove everything after YYYY
+}
+
+const publicationName = post.publication != null ? post.publication : null;
+const hasPublication = post.publication != null;
+const linkUrl = post.externalUrl != null ? post.externalUrl : post.url;
+const date = formatDate(post.date);
+---
+
+<div class="story">
+  <header class="story__header">
+    <h4><a href={linkUrl}>{post.title}</a></h4>
+    <div class="story__header__meta">
+      <h5 class="story__header__meta__date">{date}</h5>
+      {hasPublication ? <span class="story__header__meta__label slanted-xs">{post.publication?.name}</span> : null}
+    </div>
+  </header>
+
+  <div class="story__body">
+    <p>
+      {post.preamble}
+    </p>
+    <a href={linkUrl} class="story__body__link">
+      <span class="slanted-xs">Read me?</span>
+    </a>
+  </div>
+</div>

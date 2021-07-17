@@ -1,0 +1,36 @@
+---
+function formatDate(date) {
+  return new Date(date).toUTCString().replace(/(\d\d\d\d) .*/, '$1'); // remove everything after YYYY
+}
+
+const { post } = Astro.props;
+---
+<div class="story">
+  <header class="story__header">
+    <h4>
+      <a rel="noopener" target="_blank" href={post.externalUrl}>{post.title}</a>
+    </h4>
+    <div class="story__header__meta">
+      <h5 class="story__header__meta__date">{formatDate(post.date)}</h5>
+      <span class="story__header__meta__label slanted-xs">{post.publication.name}</span>
+    </div>
+  </header>
+
+  <div class="story__body">
+    <div class="story__body__image">
+      <img src={post.asset.src} alt={post.asset.alt} />
+      <div class="story__body__image__cover"></div>
+      <div class="story__body__image__controls">
+        <div class="story__body__image__controls__container">
+          <svg width="102" height="113" viewBox="0 0 102 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.43555 107.561V5L96.0729 52.4598L5.43555 107.561Z" stroke="#E8C568" stroke-width="10"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <a rel="noopener" target="_blank" href={post.externalUrl} class="story__body__link">
+      <span class="slanted-xs">Watch on {post.publication.provider}</span>
+    </a>
+  </div>
+</div>

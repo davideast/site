@@ -1,0 +1,15 @@
+---
+import StoryVideo from './StoryVideo.astro';
+import Story from './Story.astro'
+
+const { posts } = Astro.props;
+---
+<section class="story-feed">
+{
+  posts.map(post => {
+    return post.type === 'video' ? 
+      <StoryVideo post={post} /> :
+      <Story post={post} />;
+  })
+}
+</section>
